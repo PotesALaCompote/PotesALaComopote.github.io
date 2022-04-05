@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="index.css">
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+		<script src="map.js"></script>
+		<title>Les Potes à La Compote</title>
+	</head>
+		<body>
+			<div>
+				<header>				
+					<div><h1><a href="map.html">Potes à La Compote</a></h1></div>
+					<div id="droiteBandeau">
+						<div id="contact">
+							<div class="photo">
+								<img class="photo" src="image/fabien.jpg" alt="fab">
+							</div>
+							<div class="photo">
+								<img class="photo" src="image/servan.png" alt="ser">
+							</div>							
+						</div>
+					</div>
+				</header>
+				<div id="menu">
+					<nav>
+						<ul>
+							<li><a href="map.html">MAP</a></li>
+							<li class="menu-deroulant">
+									<a href="#">Les lieux</a>
+									<ul class="sous-menu">
+										<li><a href="inwork.html">BXL</a></li>
+										<li><a href="inwork.html">Grand Moulin</a></li>
+										<li><a href="inwork.html">Jaures</a></li>
+										<li><a href="inwork.html">Hôtel de ville</a></li>
+									</ul>
+								</li>
+								<li class="menu-deroulant">
+									<a href="#">Les personnages</a>
+									<ul class="sous-menu">
+										<li><a href="inwork.html">🛀 LileFab</a></li>
+										<li><a href="inwork.html">🏳‍🌈 Robs</a></li>
+										<li><a href="inwork.html">😸 Thibs la racaille</a></li>
+										<li><a href="inwork.html">🐶 Pelle LPB</a></li>
+										<li><a href="inwork.html">🚽 Youssro Pas Bo</a></li>
+										<li><a href="inwork.html">💩 Juju le bg</a></li>
+									</ul>
+								</li>
+								<li class="menu-deroulant">
+									<a href="#">Les catégories</a>
+									<ul class="sous-menu">
+										<li><a href="inwork.html">Bac à sel</a></li>
+										<li><a href="inwork.html">Panneaux</a></li>
+										<li><a href="inwork.html">Carousselle</a></li>
+										<li><a href="inwork.html">Mur</a></li>
+										<li><a href="inwork.html">Tableau</a></li>
+									</ul>
+								</li>
+						</ul>
+					</nav>
+
+					<div class="frameCarte">
+						<div id="map"></div>
+						<div class="droite">
+							<button class="boutonMap" role="button">Changer de vue de carte</button>
+							<img src="image/fleur.jpg" alt="fleur">
+						</div>						
+					</div>
+				
+
+				</div>
+			</div>
+			<!--Fichier JS-->
+			<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+			integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+			crossorigin="">
+			</script>
+
+			<script>
+			var mymap = L.map('map').setView([45.436332, 4.387992], 18);
+
+			L.tileLayer('https://tile.jawg.io/jawg-sunny/{z}/{x}/{y}{r}.png?access-token=QaHpZGsDnCd3GWLUks1HujWfS6sJdEiBndE4JYM0XNbD1DUTnNrGKyHahJm7ehhe', 
+			{
+				maxZoom: 20,
+				minZoom: 14
+			})
+				.addTo(mymap);
+
+			L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {id: 'mapbox.streets', attribution: "",
+			maxZoom: 19,
+			minZoom: 15})
+				.addTo(mymap)
+
+			mymap.attributionControl.addAttribution("<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - <a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a>&nbsp;contributors")
+
+			var lieuCreation = L.marker([45.452100717083205, 4.387944812786211]).addTo(mymap);
+			lieuCreation.bindPopup("Tout a commencé ici");
+	
+			</script>
+		</body>
+</html>  
